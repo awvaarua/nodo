@@ -1,1 +1,1 @@
-{"initialized": "true", "scripts": [{"pins": "", "pid": 1287, "fichero": "temperatura.py", "tipo": "0"}, {"pins": "", "pid": 1288, "fichero": "humedad.py", "tipo": "1"}]}
+{"initialized": "false", "scripts": [{"pins": "", "pid": 1287, "frec": "100", "fichero": "temperatura.py", "tipo": "0"}, {"pins": "", "pid": 1288, "frec": "100", "fichero": "humedad.py", "tipo": "1"}]}

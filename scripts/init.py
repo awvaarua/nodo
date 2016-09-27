@@ -8,7 +8,8 @@ with open('info.json', 'r') as f:
 initialized = data.get("initialized", "false")
 
 if initialized == "false":
-        import file
+        import initial_request
+        data["initialized"] = "true"
 else:
         scripts = data.get("scripts",[])
         import init_script
