@@ -18,7 +18,7 @@ function said(){
         })
 
         var request = new http.ClientRequest({
-            hostname: '192.168.1.142',
+            hostname: '192.168.1.135',
             port: 8080,
             path: '/nodos/data/add',
             method: "POST",
