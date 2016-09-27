@@ -2,7 +2,7 @@ import json
 import pprint
 
 #Read json
-with open('info.json', 'r') as f:
+with open('/home/pi/Node/nodo/scripts/info.json', 'r') as f:
      data = json.load(f)
 
 initialized = data.get("initialized", "false")
@@ -20,6 +20,5 @@ else:
         data['scripts'] = scripts
 
 #Save json
-with open('info.json', 'w') as f:
+with open('/home/pi/Node/nodo/scripts/info.json', 'w') as f:
      json.dump(data, f)
-     
