@@ -1,7 +1,6 @@
 import urllib2, json, time, sys
 
-url = "http://localhost:8080/pendiente/add"
-data = {"ip":"192.168.1.143"}
+url = "http://192.168.1.135/pendiente/add/req"
 
 while 1:
 	try:

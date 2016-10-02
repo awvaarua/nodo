@@ -1,6 +1,6 @@
 import urllib2, json, time, sys
 
-url = "http://localhost:8080/nodo/192.168.1.143/scripts"
+url = "http://192.168.1.135:8080/nodo/req/scripts"
 
 try:
 	config = json.loads(urllib2.urlopen(url).read())

@@ -1,6 +1,6 @@
 import urllib2, json, time, sys
 
-url = "http://localhost:8080/pendiente/192.168.1.143"
+url = "http://192.168.1.135:8080/pendiente/req"
 
 try:
 	check = json.loads(urllib2.urlopen(url).read())
