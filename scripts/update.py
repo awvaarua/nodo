@@ -1,9 +1,8 @@
 import urllib2, json, time, sys
 
-url = "http://localhost:8080/pendiente/add"
-data = {"ip":"192.168.1.143"}
-
-while 1:
+def Update(oldpid, newpid):
+	url = "http://localhost:8080/nodo/script/"+oldpid+"/update"
+	data = {cambio:{tipo:"pid", valor:newpid}}
 	try:
 		req = urllib2.Request(url)
 		req.add_header('Content-Type', 'application/json')
@@ -11,4 +10,3 @@ while 1:
 		break
 	except Exception, e:
 		print(e)
-		time.sleep(60)

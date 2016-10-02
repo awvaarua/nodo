@@ -1,24 +1,22 @@
 import json
 import pprint
+import config_request
 
-#Read json
-with open('/home/pi/Node/nodo/scripts/info.json', 'r') as f:
-     data = json.load(f)
+config = config_request.config['data']
 
-initialized = data.get("initialized", "false")
-
-if initialized == "false":
-        import initial_request
-        data["initialized"] = "true"
+if config == None:
+	import check_pendiente
+	pendiente = check_pendiente.check.get('data','false')
+	if pendiente == None:
+		import initial_request
 else:
-        scripts = data.get("scripts",[])
-        import init_script
-        for script in scripts:
-                old_pid = script.get('pid','')
-                script['pid'] = init_script.Init(script)
-                #ActualizarPid(old, new)
-        data['scripts'] = scripts
-
-#Save json
-with open('/home/pi/Node/nodo/scripts/info.json', 'w') as f:
-     json.dump(data, f)
+	initialized = config.get('initialized', 'false')
+	if initialized == "true":
+		scripts = config.get("scripts",[])
+		import init_script
+		import update
+		for script in scripts:
+		    pid = init_script.Init(script)
+		    update.Update(script.get("pid", "0"), pid);
+		    print pid
+		    
