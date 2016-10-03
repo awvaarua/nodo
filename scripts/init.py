@@ -10,6 +10,7 @@ if config == None:
 	if pendiente == None:
 		import initial_request
 else:
+	print("ieee")
 	initialized = config.get('initialized', 'false')
 	if initialized == "true":
 		scripts = config.get("scripts",[])
