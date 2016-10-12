@@ -1,9 +1,15 @@
-import urllib2, json, time, sys
+import urllib2, json, time, sys, os
+from uuid import getnode as get_mac
 
-url = "http://192.168.1.135:8080/data/add"
-data = {"tipo":"Temperatura","datos":{"ip": '192.168.1.142', "val": '30C', "date": '06/10/2016'}}
-frec = sys.argv[len(sys.argv)-1]
-print(float(frec))
+
+url = "http://localhost:8080/data/add"
+frec = sys.argv[1] #Primer argumento despues del path a ejecutar
+valor = sys.argv[2]
+data = {
+	"fichero": os.path.basename(__file__),
+	#"mac": get_mac(),
+	"mac": 12345,
+	"valor": valor}
 
 while 1:
 	req = urllib2.Request(url)
