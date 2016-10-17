@@ -12,7 +12,7 @@ else:
 	import init_script
 	import update
 	for script in scripts:
-		pid = init_script.Init(script)
-		print pid
-		update.Update(script.get("pid", "0"), pid)
+		#pid = init_script.Init(script)
+		#print pid
+		update.Update(script.get("pid", "0"))
 	print "fin"
