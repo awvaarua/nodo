@@ -5,7 +5,5 @@ def Init(script):
 		argumentos = script.get('argumentos', [])
 		for arg in argumentos:
 				str_arg = str_arg + arg.get('valor', "") + " "
-		command = 'python /home/pi/Scripts/temperatura.py '+str(str_arg)+'&'
-		print command
-		output = Popen([command])
+		output = Popen(["python", "/home/pi/Scripts/temperatura.py", str_arg, "&")
 		return output.pid
