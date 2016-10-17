@@ -1,4 +1,4 @@
-from subprocess import Popen
+import subprocess
 
 def Init(script):
 		str_arg = ""
