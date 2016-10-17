@@ -1,23 +1,17 @@
-import json
-import pprint
-import config_request
+import json, pprint, config_request
 
 config = config_request.config['data']
 
 if config == None:
 	import check_pendiente
-	pendiente = check_pendiente.check.get('data','false')
+	pendiente = check_pendiente.check.get('pendiente',None)
 	if pendiente == None:
 		import initial_request
 else:
-	print("ieee")
-	initialized = config.get('initialized', 'false')
-	if initialized == "true":
-		scripts = config.get("scripts",[])
-		import init_script
-		import update
-		for script in scripts:
-		    pid = init_script.Init(script)
-		    update.Update(script.get("pid", "0"), pid);
-		    print pid
+	scripts = config.get('scripts', [])
+	import init_script
+	import update
+	for script in scripts:
+		pid = init_script.Init(script)
+		update.Update(script.get("pid", "0"), pid)
 		    

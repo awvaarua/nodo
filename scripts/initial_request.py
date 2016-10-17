@@ -1,13 +1,12 @@
 import urllib2, json, time, sys
+from uuid import getnode as get_mac
 
-url = "http://192.168.1.135/pendiente/add/req"
+url = "http://localhost:8080/pendiente/add/"+str(get_mac())
 
 while 1:
 	try:
 		req = urllib2.Request(url)
-		req.add_header('Content-Type', 'application/json')
-		response = urllib2.urlopen(req, json.dumps(data))
+		response = urllib2.urlopen(req)
 		break
 	except Exception, e:
-		print(e)
 		time.sleep(60)
