@@ -1,4 +1,4 @@
-import urllib2, json, time, sys, json
+import urllib2, json, time, sys, json, requests
 from uuid import getnode as get_mac
 
 def Update(oldpid, newpid):
