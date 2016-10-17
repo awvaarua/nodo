@@ -13,5 +13,6 @@ else:
 	import update
 	for script in scripts:
 		pid = init_script.Init(script)
+		print "hola"
 		update.Update(script.get("pid", "0"), pid)
-		    
+	print "fin"
