@@ -1,7 +1,8 @@
 import urllib2, json, time, sys
 from uuid import getnode as get_mac
-
-url = "http://192.168.1.132:8080/pendiente/"+str(get_mac())
+with open('ip') as f:
+    ip = f.readline()
+url = "http://"+ip+"/pendiente/"+str(get_mac())
 
 try:
 	check = json.loads(urllib2.urlopen(url).read())
