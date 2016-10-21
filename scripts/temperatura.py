@@ -1,17 +1,26 @@
-import urllib2, json, time, sys, os
+import Adafruit_DHT, sys, os, urllib2, json
+from time import sleep
+from threading import Thread
 from uuid import getnode as get_mac
-with open('ip') as f:
-    ip = f.readline()
-url = "http://"+ip+"/data/add"
-frec = sys.argv[1] #Primer argumento despues del path a ejecutar
-valor = 75
-data = {
-	"fichero": os.path.basename(__file__),
-	"mac": get_mac(),
-	"valor": valor}
 
-while 1:
+sensor = Adafruit_DHT.DHT11
+pin = int(sys.argv[1])
+frec = float(sys.argv[2])*60
+if frec < 60:
+	frec = 60
+url = "http://192.168.2.105:8080/data/add"
+data = {"fichero": os.path.basename(__file__), "mac": get_mac(), "valor": ""}
+
+def Send(value):
+	data["valor"] = value
 	req = urllib2.Request(url)
 	req.add_header('Content-Type', 'application/json')
 	response = urllib2.urlopen(req, json.dumps(data))
-	time.sleep(float(frec))
+
+if __name__ == "__main__":
+	while True:
+		temperature = Adafruit_DHT.read_retry(sensor, pin)
+		if temperature is not None:
+			temp = '{0:0.1f}'.format(temperature[1])
+			Thread(target = Send, args=(temp,)).start()
+		sleep(frec)

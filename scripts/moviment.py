@@ -1,14 +1,12 @@
 import urllib2, json, time, sys, os, time
 from uuid import getnode as get_mac
 import threading, RPi.GPIO as GPIO
-with open('ip') as f:
-    ip = f.readline()
 
 GPIO.setmode(GPIO.BCM)
 PIN_MOVIMIENTO = int(sys.argv[1])
 GPIO.setup(PIN_MOVIMIENTO, GPIO.IN)
 
-url = "http://"+ip+"/data/add"
+url = "http://192.168.2.105:8080/data/add"
 data = {
         "fichero": os.path.basename(__file__),
         "mac": get_mac()
