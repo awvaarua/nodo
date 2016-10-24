@@ -1,7 +1,7 @@
 import urllib2, json, time, sys
 from uuid import getnode as get_mac
 with open('ip') as f:
-    ip = f.readline()
+    ip = f.readline().strip('\n')
 url = "http://"+ip+"/nodo/"+str(get_mac())+"/scripts"
 
 while 1:
@@ -9,4 +9,5 @@ while 1:
 		config = json.loads(urllib2.urlopen(url).read())
 		break
 	except Exception, e:
+		print e
 		time.sleep(60)

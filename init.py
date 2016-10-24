@@ -9,7 +9,6 @@ if config == None:
 		import initial_request
 else:
 	scripts = config.get('scripts', [])
-	import init_script
 	import update
 	for script in scripts:
 		update.Update(script.get("pid", "0"))
