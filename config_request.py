@@ -9,5 +9,4 @@ while 1:
 		config = json.loads(urllib2.urlopen(url).read())
 		break
 	except Exception, e:
-		print e
-		time.sleep(60)
+		time.sleep(20)
