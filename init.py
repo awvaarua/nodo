@@ -1,4 +1,6 @@
-import json, pprint, config_request
+import json, pprint, config_request, time
+
+time.sleep(5);
 
 config = config_request.config['data']
 
